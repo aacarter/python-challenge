@@ -27,11 +27,11 @@ with open(election_csv, newline="") as csvfile:
             li_count = li_count + 1
         if row[2] == "O'Tooley":
             otooley_count = otooley_count + 1
-        khan_percentage = khan_count/total_votes*100
-        correy_percentage = correy_count/total_votes*100
-        li_percentage = li_count/total_votes*100
-        otooley_percentage = otooley_count/total_votes*100
-       
+        khan_percentage = round(khan_count/total_votes*100)
+        correy_percentage = round(correy_count/total_votes*100)
+        li_percentage = round(li_count/total_votes*100)
+        otooley_percentage = round(otooley_count/total_votes*100)
+
 
     print("Election Results")
     print("-------------------------")
@@ -43,14 +43,16 @@ with open(election_csv, newline="") as csvfile:
     print(str(candidate_four) + ": " + str(otooley_percentage) + "%" + " (" + str(otooley_count) + ")")
     print("-------------------------")
 
-        if khan_percentage > 50:
+    for row in csvreader:
+        if khan_count >= 1760500:
             print("Winner: " + str(candidate_one))
-        if correy_percentage > 50:
+        elif correy_count >= 1760500:
             print("Winner: " + str(candidate_two))
-        if li_percentage > 50:
+        elif li_count >= 1760500:
             print("Winner: " + str(candidate_three))
-        if otooley_percentage > 50:
+        elif otooley_count >= 1760500:
             print("Winner: " + str(candidate_four))
-
+        else:
+            print("Tie")
     
     
