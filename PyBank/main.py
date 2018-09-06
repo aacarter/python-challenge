@@ -14,16 +14,16 @@ with open(budget_csv, newline="") as csvfile:
     profit_losses_change = 0
 
 
+    change = list()
     for row in csvreader:
         total_months = total_months + 1
         total += int(row[1])
 
-        change = []
         value = int(row[1])
         if last is not None:
             change.append(value - last)
         last = value
-        print(change)
+    print(change)
         #avg_change = sum(change) / len(change)
         #print(max(change))
         #print(min(change))
