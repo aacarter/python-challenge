@@ -14,19 +14,25 @@ with open(budget_csv, newline="") as csvfile:
     profit_losses_change = 0
 
 
+    bank_dict = {}
     change = list()
     for row in csvreader:
         total_months = total_months + 1
         total += int(row[1])
-
         value = int(row[1])
+        key = str(row[0])
+        val = change[:]
+        bank_dict[key] = val
         if last is not None:
             change.append(value - last)
         last = value
-    print(change)
-        #avg_change = sum(change) / len(change)
-        #print(max(change))
-        #print(min(change))
+        
+    avg_change = sum(change) / len(change)
+    #print(bank_dict)
+    #greatest_increase = str(row[0])
+        
+        
+        
 
 
 
@@ -35,6 +41,9 @@ with open(budget_csv, newline="") as csvfile:
     print("-------------------------")
     print("Total Months: " + str(total_months))
     print("Total: " + "$" + str(total))
+    print("Average Change: " + str(round(avg_change, 2)))
+    print("Greatest Increase in Profits: " + ("$" + str(max(change))))
+    print("Greatest Increase in Profits: " + ("$" + str(min(change))))
 
 
 

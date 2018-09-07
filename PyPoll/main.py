@@ -43,16 +43,24 @@ with open(election_csv, newline="") as csvfile:
     print(str(candidate_four) + ": " + str(otooley_percentage) + "%" + " (" + str(otooley_count) + ")")
     print("-------------------------")
 
+with open(election_csv, newline="") as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=',')
+    header = next(csvreader)
     for row in csvreader:
         if khan_count >= 1760500:
             print("Winner: " + str(candidate_one))
+            break  
         elif correy_count >= 1760500:
             print("Winner: " + str(candidate_two))
+            break
         elif li_count >= 1760500:
             print("Winner: " + str(candidate_three))
+            break
         elif otooley_count >= 1760500:
             print("Winner: " + str(candidate_four))
+            break
         else:
             print("Tie")
     
+    print("-------------------------")
     
